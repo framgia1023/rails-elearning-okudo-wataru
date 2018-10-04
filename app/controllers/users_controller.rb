@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
 
 	def index
-		@users = User.all
+		# @users = User.all
+		@users = User.all.paginate(page: params[:page], per_page: 3)
 	end
 
 	def new
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Success Login"
 			redirect_to root_url
 		else
+			flash[:danger] = "Failed"
 			render "users/new"
 		end
 	end

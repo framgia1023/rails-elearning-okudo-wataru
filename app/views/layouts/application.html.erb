@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsElearningOkudoWataru</title>
+    <title>ELearning</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+
+    <%if flash.any?  %>
+      <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %>">
+        <div><%= msg %></div>
+      </div>
+    <% end %>
+    <% end %>
+
     <%= yield %>
+
+    <%= render "layouts/footer" %>
   </body>
 </html>

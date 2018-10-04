@@ -11,4 +11,10 @@ module SessionsHelper
 	def logged_in?
 		!current_user.nil?
 	end
+
+	def logout
+		session.delete(:user_id)
+		flash[:danger] = "SUCCESS LOGOUT"
+	end
+		
 end

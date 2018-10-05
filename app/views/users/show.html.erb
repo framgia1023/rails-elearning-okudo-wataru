@@ -14,8 +14,24 @@
 									<!-- params[:followed_id]-->
 		<%= f.submit "Be friend", class: "btn btn-primary btn-block" %>
 	<% end %>
-
 <% end %>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<h5>Following</h5>
+				<h3><span class="badge badge-primary" id="following">
+					<%= @user.following.count %>
+					</span>
+				</h3>
+		</div>
+		<div class="col-lg-6">
+			<h5>Followers</h5>
+				<h3><span class="badge badge-primary" id="followers">
+					<%= @user.followers.count %>
+					</span>
+				</h3>
+		</div>							
+	</div>
 
 
 <%= link_to "Edit", edit_user_path(@user.id) %>

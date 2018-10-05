@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <!--   <a class="navbar-brand" href="#">AwesomeBlog</a> -->
-  <%= link_to "AwesomeBlog", root_path, class: "navbar-brand" %>
+  <%= link_to "JAPAN QUEST", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,13 +19,15 @@
       </li>
         
       <li>
-        <%= link_to "Profile", "#", class: "dropdown-item" %>
+        <%= link_to "Profile", "#", class: "nav-link" %>
       </li>
+      <% if current_user != nil %>
+        <li>
+          <%= link_to "Settings", edit_user_path(current_user.id) , class: "nav-link" %>
+        </li>
+      <% end %>
       <li>
-        <%= link_to "Settings", "#", class: "dropdown-item" %>
-      </li>
-      <li>
-        <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %>
+        <%= link_to "Logout", logout_path, method: :delete, class: "nav-link" %>
       </li>   
       </li>       
         <%= link_to "Login", login_path, class: "nav-item nav-link" %>        

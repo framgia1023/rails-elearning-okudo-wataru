@@ -36,7 +36,6 @@ class UsersController < ApplicationController
 			flash[:success] = "Success Login"
 			redirect_to root_url
 		else
-			flash[:danger] = "Failed"
 			render "new"
 		end
 	end

@@ -6,8 +6,27 @@ class UsersController < ApplicationController
 		@users = User.all.paginate(page: params[:page], per_page: 3)
 	end
 
+	def show
+		@user = User.find(params[:id])
+	end
+
 	def new
 		@user = User.new
+	end
+
+	def edit
+		@user = User.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if
+			@user.update_attributes(user_params)
+			flash[:success] = "SUCCESS EDIT"
+			redirect_to user_url
+		else
+			render "edit"
+		end
 	end
 
 	def create
@@ -18,7 +37,7 @@ class UsersController < ApplicationController
 			redirect_to root_url
 		else
 			flash[:danger] = "Failed"
-			render "users/new"
+			render "new"
 		end
 	end
 

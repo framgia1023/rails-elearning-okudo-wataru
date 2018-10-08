@@ -12,3 +12,26 @@ body
 	background-size: 100% auto;
 	
 }
+
+.icon
+{
+	height: 50px;
+	width: 50px;
+	fill: #fff;
+}
+
+.nav-item ul li 
+{
+	list-style: none;
+	color: white;
+	text-align: center;
+}
+
+.icon:hover
+{
+	fill: red;
+}
+.word:hover
+{
+	color: red;
+}

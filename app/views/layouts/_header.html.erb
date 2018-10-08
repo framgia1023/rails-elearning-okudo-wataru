@@ -5,33 +5,95 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse " id="navbarNav">
+    
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-<!--         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-        <%= link_to "Home", root_path, class: "nav-link" %>
+
+      <li class="nav-item active jq">
+        <ul>
+        <%= link_to root_path do %>
+          <li><%= embedded_svg("icon/NEOICON1.svg", class: "icon") %></li>
+          <li class="word">HOME</li>
+        <% end %>          
+        </ul>
       </li>
-      <li class="nav-item">
-<!--         <a class="nav-link" href="#">About</a> -->
-        <%= link_to "About", "#" , class: "nav-link" %>
+
+      <li class="nav-item active jq">
+        <ul>
+        <%= link_to "#" do %>
+          <li><%= embedded_svg("icon/NEOICON2.svg", class: "icon") %></li>
+          <li class="word">ABOUT</li>
+        <% end %>          
+        </ul>
       </li>
-      <li>
-        <%= link_to "Users", users_path, class: "nav-link" %>       
-      </li>
-        
-      <li>
-        <%= link_to "Profile", "#", class: "nav-link" %>
-      </li>
-      <% if current_user != nil %>
-        <li>
-          <%= link_to "Settings", edit_user_path(current_user.id) , class: "nav-link" %>
-        </li>
-      <% end %>
-      <li>
-        <%= link_to "Logout", logout_path, method: :delete, class: "nav-link" %>
-      </li>   
-      </li>       
-        <%= link_to "Login", login_path, class: "nav-item nav-link" %>        
-        <%= link_to "Sign-up", new_user_path,class: "nav-link" %>
+
+        <% if current_user != nil %>
+
+          <li class="nav-item active jq">
+            <ul>
+            <%= link_to users_path do %>
+              <li><%= embedded_svg("icon/NEOICON3.svg", class: "icon") %></li>
+              <li class="word">Users</li>
+            <% end %>          
+            </ul>
+          </li>
+
+          <li class="nav-item active jq">          
+            <ul>
+            <%= link_to user_path(current_user.id) do %>
+              <li><%= embedded_svg("icon/NEOICON4.svg", class: "icon") %></li>
+              <li class="word">Profile</li>
+            <% end %>          
+            </ul>
+          </li>
+
+          <li class="nav-item active jq">          
+            <ul>
+            <%= link_to edit_user_path(current_user.id) do %>
+              <li><%= embedded_svg("icon/NEOICON1.svg", class: "icon") %></li>
+              <li class="word">Settings</li>
+            <% end %>          
+            </ul>
+          </li>
+
+          <li class="nav-item active jq">          
+            <ul>
+            <%= link_to logout_path, method: :delete do %>
+              <li><%= embedded_svg("icon/NEOICON2.svg", class: "icon") %></li>
+              <li class="word">Logout</li>
+            <% end %>          
+            </ul>
+          </li>
+
+        <% else %>
+
+          <li class="nav-item active jq">          
+            <ul>
+            <%= link_to login_path do %>
+              <li><%= embedded_svg("icon/NEOICON4.svg", class: "icon") %></li>
+              <li class="word">Login</li>
+            <% end %>          
+            </ul>
+          </li>
+
+          <li class="nav-item active jq">          
+            <ul>
+            <%= link_to new_user_path do %>
+              <li><%= embedded_svg("icon/NEOICON1.svg", class: "icon") %></li>
+              <li class="word">SIGNUP</li>
+            <% end %>          
+            </ul>
+          </li>
+        <% end %>
+ 
     </ul>
+
+
   </div>
 </nav>
+
+<p class="test">jQuery working?</p>
+<script type="text/javascript">
+  $(function() {
+    $(".test").css("color","red");
+  });
+</script>

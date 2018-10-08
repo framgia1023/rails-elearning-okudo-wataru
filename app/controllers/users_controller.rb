@@ -49,15 +49,15 @@ class UsersController < ApplicationController
 		end
 	end	
 
-	def avator
-		@user = User.find(params[:id])
-		@user.image = parmas[:user][:image_id]
-		if 	@user.save
-			redirect_to root_url
-		else
-			render "users/avator"
-		end
-	end
+	# def avator
+	# 	@user = User.find(params[:id])
+	# 	@user.image = parmas[:user][:image_id]
+	# 	if 	@user.save
+	# 		redirect_to root_url
+	# 	else
+	# 		render "users/avator"
+	# 	end
+	# end
 
 	private
 

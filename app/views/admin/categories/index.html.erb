@@ -1,0 +1,30 @@
+<div class="container">
+	<h1 class="text-center m-5">QUEST LIST</h1>
+	<table class="table">
+	  <thead>
+	    <tr style="color: red">
+	      <th scope="col">#</th>
+	      <th scope="col">title</th>
+	      <th scope="col">description</th>
+	      <th scope="col">option</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+
+		<% i = 1 %>
+		<% @category.each do |cat| %>
+	    <tr>
+	      <th scope="row"><%= i %></th>
+	      <td><%= cat.title %></td>
+	      <td><%= cat.description %></td>
+	      <td>
+	      	<%= link_to "Delete", admin_category_path(cat.id), method: :delete, class: "btn btn-danger" %>
+	      	<%= link_to "Modify", edit_admin_category_path(cat.id), class: "btn btn-success" %>
+	      </td>
+	    </tr>
+	    <% i += 1 %>
+	    <% end %>
+
+	  </tbody>
+	</table>	
+</div>

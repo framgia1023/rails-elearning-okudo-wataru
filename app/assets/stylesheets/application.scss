@@ -33,4 +33,19 @@ body
 .word:hover
 {
 	color: red;
+
+}
+
+.avator_style
+{
+	height: 100px;
+}
+
+.checkbox
+{
+	display: none;
+}
+
+.checkbox:checked + .avator_style {
+    border: 1px solid red;
 }

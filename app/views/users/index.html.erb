@@ -7,7 +7,7 @@
 				<%#= link_to gravatar_for(user), (user_path(user.id)) %>
 			</div>
 			<div class="media-body ml-2">
-				<%= image_tag('avator/icon1.png') %>
+				<%= show_avator(user) %>
 				<h3><%= link_to user.name, (user_path(user.id)) %></h3>
 				<h3><%= user.email %></h3>
 				

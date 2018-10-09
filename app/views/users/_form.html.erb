@@ -22,41 +22,62 @@
 </div>
 
 <div class="form-group">
+	<%= f.label :avator_image %>	<br>
+	<div class="row">
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator1.png',nil %>
+			<%= image_tag('/avator1.png', class: "avator_style", for: :image) %>		
+			</label>			
+		</div>
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator2.png',nil %>
+			<%= image_tag('/avator2.png', class: "avator_style", for: :image) %>		
+			</label>			
+		</div>
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator3.png',nil %>
+			<%= image_tag('/avator3.png', class: "avator_style", for: :image) %>		
+			</label>			
+		</div>
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator4.png',nil %>
+			<%= image_tag('/avator4.png', class: "avator_style", for: :image) %>		
+			</label>				
+		</div>
+	</div>
 
-	<%= f.label :avator_image %>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator1.png',nil %>
-	<%= image_tag('/avator1.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator2.png',nil %>
-	<%= image_tag('/avator2.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator3.png',nil %>
-	<%= image_tag('/avator3.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator4.png',nil %>
-	<%= image_tag('/avator4.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator5.png',nil %>
-	<%= image_tag('/avator5.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator6.png',nil %>
-	<%= image_tag('/avator6.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator7.png',nil%>
-	<%= image_tag('/avator7.png', class: "avator_style", for: :image) %>		
-	</label>
-	<label class="image_box">
-	<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator8.png',nil %>
-	<%= image_tag('/avator8.png', class: "avator_style", for: :image) %>		
-	</label>
-
+	<div class="row">
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator5.png',nil %>
+			<%= image_tag('/avator5.png', class: "avator_style", for: :image) %>		
+			</label>			
+		</div>
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator6.png',nil %>
+			<%= image_tag('/avator6.png', class: "avator_style", for: :image) %>		
+			</label>			
+		</div>
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator7.png',nil%>
+			<%= image_tag('/avator7.png', class: "avator_style", for: :image) %>		
+			</label>			
+		</div>
+		<div class="col-lg-3">
+			<label class="image_box">
+			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator8.png',nil %>
+			<%= image_tag('/avator8.png', class: "avator_style", for: :image) %>		
+			</label>				
+		</div>
+	
+	</div>
+	
 </div>	
 
 <div class="form-group">
@@ -64,3 +85,16 @@
 </div>
 
 <% end %>
+
+<script type="text/javascript">
+	$("input:checkbox").on('click', function() {
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
+</script>

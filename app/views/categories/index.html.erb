@@ -1,16 +1,13 @@
-<% @categories.each do |cat| %>
-
-<div class="container mt-3">
-	<div class="jumbotron jumbotron-fluid">
-	  <div class="container">
-	    <h1 class="display-4"><%= link_to cat.title ,category_path(cat.id) %></h1>
-	    <p class="lead"><%= cat.description %></p>
-	  </div>
-	</div>
+<div class="row">
+	<% @categories.each do |cat| %>
+		<div class="container col-lg-4">
+			<div class="jumbotron m-3">
+			    <h3 class=""><%= link_to cat.title ,category_path(cat.id) %></h3>
+			    <p class=""><%= cat.description %></p>		
+			</div>			
+		</div>
+	<% end %>
 </div>
-
-<% end %>
-
-	<div class="container paginate text-center offset-5">
-		<%= will_paginate %>
-	</div>
+<div class="container paginate text-center offset-5">
+	<%= will_paginate %>
+</div>

@@ -1,0 +1,13 @@
+<div class="row">
+	<% @categories.each do |cat| %>
+		<div class="container col-lg-4">
+			<div class="jumbotron m-3">
+			    <h3 class=""><%= link_to cat.title ,category_path(cat.id) %></h3>
+			    <p class=""><%= cat.description %></p>		
+			</div>			
+		</div>
+	<% end %>
+</div>
+<div class="container paginate text-center offset-5">
+	<%= will_paginate %>
+</div>

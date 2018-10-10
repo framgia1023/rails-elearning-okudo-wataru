@@ -12,7 +12,7 @@
 	  <tbody>
 
 		<% i = 1 %>
-		<% @category.each do |cat| %>
+		<% @categories.each do |cat| %>
 	    <tr>
 	      <th scope="row"><%= i %></th>
 	      <td><%= cat.title %></td>
@@ -27,4 +27,7 @@
 
 	  </tbody>
 	</table>	
+		<div class="container paginate text-center offset-5">
+		<%= will_paginate %>
+	</div>
 </div>

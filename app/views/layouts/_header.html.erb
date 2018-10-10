@@ -55,6 +55,15 @@
             </ul>
           </li>
 
+          <li class="nav-item active jq">
+            <ul>
+            <%= link_to categories_path do %>
+              <li><%= embedded_svg("icon/NEOICON3.svg", class: "icon") %></li>
+              <li class="word">Quest</li>
+            <% end %>          
+            </ul>
+          </li>
+
           <li class="nav-item active jq">          
             <ul>
             <%= link_to logout_path, method: :delete do %>

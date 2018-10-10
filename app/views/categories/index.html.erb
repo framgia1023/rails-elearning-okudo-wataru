@@ -1,0 +1,12 @@
+<% @category.each do |cat| %>
+
+<div class="container mt-3">
+	<div class="jumbotron jumbotron-fluid">
+	  <div class="container">
+	    <h1 class="display-4"><%= link_to cat.title ,category_path(cat.id) %></h1>
+	    <p class="lead"><%= cat.description %></p>
+	  </div>
+	</div>
+</div>
+
+<% end %>

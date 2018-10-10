@@ -1,4 +1,4 @@
-<% @category.each do |cat| %>
+<% @categories.each do |cat| %>
 
 <div class="container mt-3">
 	<div class="jumbotron jumbotron-fluid">
@@ -10,3 +10,7 @@
 </div>
 
 <% end %>
+
+	<div class="container paginate text-center offset-5">
+		<%= will_paginate %>
+	</div>

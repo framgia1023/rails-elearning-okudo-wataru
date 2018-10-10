@@ -9,7 +9,7 @@ class Admin::CategoriesController < AdminController
 	end
 
 	def index
-		@category = Category.all
+		@categories = Category.all.paginate(page: params[:page], per_page: 5)
 	end
 
 	def create

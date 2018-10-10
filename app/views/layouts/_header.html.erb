@@ -64,6 +64,17 @@
             </ul>
           </li>
 
+         <% if current_user.admin? %>
+          <li class="nav-item active">
+            <ul>
+              <%= link_to "/admin/home" do %>
+              <li><%= embedded_svg("icon/NEOICON4.svg",class: "icon") %></li>
+              <li class="word">MASTER'S ROOM</li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
         <% else %>
 
           <li class="nav-item active jq">          
@@ -84,6 +95,7 @@
             </ul>
           </li>
         <% end %>
+
  
     </ul>
 

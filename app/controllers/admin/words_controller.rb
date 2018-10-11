@@ -17,6 +17,7 @@ class Admin::WordsController < AdminController
 			flash[:success] = "make quest completely"
 			redirect_to root_url
 		else
+			@category = Category.find(params[:category_id])
 			render "new"
 		end
 	end
@@ -45,6 +46,7 @@ class Admin::WordsController < AdminController
 			flash[:success] = "success modify word"
 			redirect_to admin_category_words_url(@word.category_id)
 		else
+			@category = Category.find(params[:category_id])
 			render "edit"
 		end
 	end

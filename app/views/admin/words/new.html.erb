@@ -13,17 +13,19 @@
 			<%= wo.text_field :content, class: "form-control", placeholder: "ENTER SPELL NAME" %>				
 		</div>
 
-		<%= wo.fields_for :choices do |cho| %>
-			<div class="row">
-			    <div class="form-group col-lg-8">
-					<%= cho.label :content %>
-					<%= cho.text_field :content, class: "form-control", placeholder: "MAKE CHOICE" %>
+		<div class="ch">
+			<%= wo.fields_for :choices do |cho| %>
+				<div class="row">
+				    <div class="form-group col-lg-8">
+						<%= cho.label :choice %>
+						<%= cho.text_field :content, class: "form-control", placeholder: "MAKE CHOICE" %>
+					</div>
+					<div class="form-group col-lg-2">
+						<%= cho.check_box :correct %>
+					</div>				
 				</div>
-				<div class="form-group col-lg-2">
-					<%= cho.check_box :correct, class: "form-control" %>
-				</div>				
-			</div>
-		<% end %>
+			<% end %>			
+		</div>
 
 		<div class="form-group">
 			<%= wo.submit "CREATE ANOTHER MENACE"%>			

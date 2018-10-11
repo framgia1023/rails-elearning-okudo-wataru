@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
-  	resources :categories
+  	resources :categories do
+      resources :words
+    end
   end
 
   root 'static_pages#home'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :users
   resources :relationships, only: [:create, :destroy]
   resources :categories
+  resources :words
 
 end
 

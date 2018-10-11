@@ -1,0 +1,33 @@
+<div class="text-center mt-4" style="color: red; ">
+	<h1><%= @category.title %></h1>	
+</div>
+
+
+<div class="container">
+	<%= form_for ([:admin,:category, @word]) do |wo| %>
+
+		<%= render "shared/error_messages", object: wo.object %>
+
+		<div class="form-group">
+			<%= wo.label :content %>
+			<%= wo.text_field :content, class: "form-control", placeholder: "ENTER SPELL NAME" %>				
+		</div>
+
+		<%= wo.fields_for :choices do |cho| %>
+			<div class="row">
+			    <div class="form-group col-lg-8">
+					<%= cho.label :content %>
+					<%= cho.text_field :content, class: "form-control", placeholder: "MAKE CHOICE" %>
+				</div>
+				<div class="form-group col-lg-2">
+					<%= cho.check_box :correct, class: "form-control" %>
+				</div>				
+			</div>
+		<% end %>
+
+		<div class="form-group">
+			<%= wo.submit "CREATE ANOTHER MENACE"%>			
+		</div>
+
+	<% end %>
+</div>

@@ -1,5 +1,8 @@
 <div class="container">
 	<h1 class="text-center m-5">QUEST LIST</h1>
+	<div class="text-center m-4">
+		<%= link_to "Create Quest", new_admin_category_path, class: "btn btn-light" %>
+	</div>
 	<table class="table">
 	  <thead>
 	    <tr style="color: red">
@@ -15,11 +18,18 @@
 		<% @categories.each do |cat| %>
 	    <tr>
 	      <th scope="row"><%= i %></th>
-	      <td><%= cat.title %></td>
+
+	      <%# if cat.word.? %>
+	      <td><%= link_to cat.title, admin_category_words_path(cat.id) %></td>
+	      <%# else %>
+<!-- 	      <td><%= cat.title %></td> -->
+		  <%# end %>	
+
 	      <td><%= cat.description %></td>
 	      <td>
 	      	<%= link_to "Delete", admin_category_path(cat.id), method: :delete, class: "btn btn-danger" %>
 	      	<%= link_to "Modify", edit_admin_category_path(cat.id), class: "btn btn-success" %>
+	      	<%= link_to "Add word", new_admin_category_word_path(cat.id), class: "btn btn-light" %>
 	      </td>
 	    </tr>
 	    <% i += 1 %>

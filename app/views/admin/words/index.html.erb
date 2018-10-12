@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="text-center">
+		<h1><%= @category.title %></h1>	
+	</div>
+	
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Words</th>
+      <th scope="col">Answer</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @words.each do |wo| %>
+    <tr>
+      <td><%= wo.content %></td>
+      <td><%= wo.choices.find_by(correct: true).content %></td>
+      <td>
+	      <%= link_to "Delete", admin_category_word_path(category_id: @category.id, id: wo.id), method: :delete, class: "btn btn-outline-danger" %>
+	      <%= link_to "Modify", edit_admin_category_word_path(category_id: @category.id, id: wo.id) , class: "btn btn-outline-success" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

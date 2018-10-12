@@ -46,7 +46,7 @@ class Admin::WordsController < AdminController
 			flash[:success] = "success modify word"
 			redirect_to admin_category_words_url(@word.category_id)
 		else
-			@category = Category.find(params[:category_id])
+			@category = @word.category
 			render "edit"
 		end
 	end

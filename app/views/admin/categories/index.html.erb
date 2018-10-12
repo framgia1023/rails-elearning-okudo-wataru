@@ -6,7 +6,6 @@
 	<table class="table">
 	  <thead>
 	    <tr style="color: red">
-	      <th scope="col">#</th>
 	      <th scope="col">title</th>
 	      <th scope="col">description</th>
 	      <th scope="col">option</th>
@@ -14,11 +13,8 @@
 	  </thead>
 	  <tbody>
 
-		<% i = 1 %>
 		<% @categories.each do |cat| %>
 	    <tr>
-	      <th scope="row"><%= i %></th>
-
 	      <%# if cat.word.? %>
 	      <td><%= link_to cat.title, admin_category_words_path(cat.id) %></td>
 	      <%# else %>
@@ -32,7 +28,6 @@
 	      	<%= link_to "Add word", new_admin_category_word_path(cat.id), class: "btn btn-light" %>
 	      </td>
 	    </tr>
-	    <% i += 1 %>
 	    <% end %>
 
 	  </tbody>

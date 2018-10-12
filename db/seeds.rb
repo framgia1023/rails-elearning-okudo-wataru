@@ -15,8 +15,8 @@
 		image: "/avator#{k}.png")
 end
 
-# cat_id = 1
-# wor_id = 1
+cat_id = 1
+wor_id = 1
 
 10.times do 
 	Category.create!(
@@ -51,3 +51,5 @@ end
 	# cat_id += cat_id
 
 end
+
+	

@@ -3,7 +3,7 @@ class Admin::WordsController < AdminController
 
 	def new
 		@category = Category.find(params[:category_id])
-		@word = Word.new
+		@word = @category.words.build
 		4.times {
 			@word.choices.build
 		}
@@ -24,7 +24,7 @@ class Admin::WordsController < AdminController
 
 	def index
 		@category = Category.find(params[:category_id])
-		@words = @category.words.all
+		@words = @category.words
 	end
 
 	def show

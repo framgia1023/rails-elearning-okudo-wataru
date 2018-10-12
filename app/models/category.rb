@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
 
-	has_many :words, :foreign_key => "category_id"
+	has_many :words
 	has_many :lessons
 
 	validates :title, presence: true, length: { maximum: 30}

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
 	def index
 		# @users = User.all
-		@users = User.all.paginate(page: params[:page], per_page: 3)
+		@users = User.all.paginate(page: params[:page], per_page: 6)
 	end
 
 	def show
@@ -48,11 +48,7 @@ class UsersController < ApplicationController
 			render "new"
 		end
 	end	
-<<<<<<< Updated upstream
-	
-=======
-			
->>>>>>> Stashed changes
+
 	private
 
 		def user_params

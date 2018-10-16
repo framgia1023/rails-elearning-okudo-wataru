@@ -15,7 +15,7 @@ class Admin::WordsController < AdminController
 
 		if @word.save
 			flash[:success] = "make quest completely"
-			redirect_to root_url
+			redirect_to admin_category_words_url(@word.category_id)
 		else
 			@category = Category.find(params[:category_id])
 			render "new"
@@ -36,7 +36,6 @@ class Admin::WordsController < AdminController
 	def edit
 		@category = Category.find(params[:category_id])
 		@word = Word.find(params[:id])
-		@choice = @word.choices.all
 	end
 
 	def update

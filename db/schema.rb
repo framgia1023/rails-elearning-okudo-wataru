@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_085215) do
+<<<<<<< Updated upstream
+ActiveRecord::Schema.define(version: 2018_10_12_092431) do
+
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "choice_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["choice_id"], name: "index_answers_on_choice_id"
+    t.index ["lesson_id"], name: "index_answers_on_lesson_id"
+    t.index ["word_id"], name: "index_answers_on_word_id"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -37,6 +49,9 @@ ActiveRecord::Schema.define(version: 2018_10_10_085215) do
     t.index ["category_id"], name: "index_lessons_on_category_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
+=======
+ActiveRecord::Schema.define(version: 2018_10_08_075214) do
+>>>>>>> Stashed changes
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "follower_id"
@@ -55,7 +70,6 @@ ActiveRecord::Schema.define(version: 2018_10_10_085215) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.string "image"
   end
 
   create_table "words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -18,6 +18,8 @@ class User < ApplicationRecord
 										dependent: :destroy
 	has_many :followers, through: :passive_relationships, source: :follower
 
+	has_many :lessons
+
 
 	# def follow(other_user)
 	# 	following << other_user	

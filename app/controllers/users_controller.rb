@@ -48,11 +48,15 @@ class UsersController < ApplicationController
 			render "new"
 		end
 	end	
+<<<<<<< Updated upstream
 	
+=======
+			
+>>>>>>> Stashed changes
 	private
 
 		def user_params
-			params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+			params.require(:user).permit(:name, :email, :password, :password_confirmation)
 		end
 
 		def require_login

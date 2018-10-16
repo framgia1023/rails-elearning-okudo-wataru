@@ -1,0 +1,23 @@
+<h1><%= "#{count_true(@choices)} / #{count_word(@words)} you can defeat" %></h1>
+
+<h1><%= @category.title %></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">word</th>
+      <th scope="col">correct_answer</th>
+      <th scope="col">your_answer</th>
+      <th scope="col">result</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @words.each do |wo| %>
+    <tr>
+      <th><%= wo.content %></th>
+      <td><%= wo.choices.find_by(correct: :true).content %></td>
+      <td><%= @choices.find_by(word_id: wo.id).content %></td>
+      <td><%= trufal(@choices.find_by(word_id: wo.id).correct) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

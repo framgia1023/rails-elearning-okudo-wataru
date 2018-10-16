@@ -23,32 +23,32 @@ wor_id = 1
 		title: Faker::Zelda.location,
 		description: Faker::HarryPotter.quote
 		)
-	# 5.times do 
-	# 	Word.create!(
-	# 		content: Faker::Pokemon.name,
-	# 		category_id: cat_id
-	# 		)
+	5.times do 
+		Word.create!(
+			content: Faker::Pokemon.name,
+			category_id: cat_id
+			)
 
-		# 4.times do |c|
-		# 	if (c == 4)
-		# 		Choice.create!(
-		# 			content: Faker::Dragonball.character,
-		# 			word_id: wor_id,
-		# 			correct: true
-		# 			)
-		# 	else
-		# 		Choice.create!(
-		# 			content: Faker::Zelda.character,
-		# 			word_id: wor_id,
-		# 			correct: false
-		# 			)
-		# 	end
-		# end
-		# wor_id += 
+		4.times do |c|
+			if (c == 3)
+				Choice.create!(
+					content: Faker::Dragonball.character,
+					word_id: wor_id,
+					correct: true
+					)
+			else
+				Choice.create!(
+					content: Faker::Zelda.character,
+					word_id: wor_id,
+					correct: false
+					)
+			end
+		end
+		wor_id += wor_id
 
-	# end
+	end
 
-	# cat_id += cat_id
+	cat_id += cat_id
 
 end
 

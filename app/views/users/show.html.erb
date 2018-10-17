@@ -46,53 +46,28 @@
 	</div>
 
 
-
-
-	<% if current_user == @user %>
-		<div class="col-lg-6">
-			<div class="jumbotron">
-				<div class="row">
-					<% @activities.each do |act| %>
-						<% if doyouknow_actor(act,current_user) %>
-							<div class="col-lg-3">
-								<%= activity_man(act) %>
-							</div>
-							<div class="col-lg-8">
-								<%= activity_log(act) %>
-								<br>
-								<small><%= time_ago_in_words(act.created_at) %></small>
-							</div>
+	<div class="col-lg-6">
+		<div class="jumbotron">
+			<div class="row">
+				<% @activities.each do |act| %>
+					<div class="col-lg-3">
+						<%= show_man(act) %>
+					</div>
+					<div class="col-lg-8">
+						<%= activity_log(act) %>
+						<% if act.action_type == "Lesson" %>
+							<%= count_defeat(act) %>
 						<% end %>
-					<% end %>				
-				</div>
-				<div class="container paginate text-center offset-5">
-					<%= will_paginate @activities %>
-				</div>
+						<br>
+						<small><%= time_ago_in_words(act.created_at) %></small>
+					</div>
+				<% end %>				
+			</div>
+			<div class="container paginate text-center offset-5">
+				<%= will_paginate @activities %>
 			</div>
 		</div>
-	<% else %>
-		<div class="col-lg-6">
-			<div class="jumbotron">
-				<div class="row">
-					<% @activities.each do |act| %>
-						<% if whoareyou(act,@user) %>
-							<div class="col-lg-3">
-								<%= activity_man(act) %>
-							</div>
-							<div class="col-lg-8">
-								<%= activity_log(act) %>
-								<br>
-								<small><%= time_ago_in_words(act.created_at) %></small>
-							</div>
-						<% end %>
-					<% end %>				
-				</div>
-				<div class="container paginate text-center offset-5">
-					<%= will_paginate @activities %>
-				</div>
-			</div>
-		</div>		
-	<% end %>
+	</div>
 </div>
 
 

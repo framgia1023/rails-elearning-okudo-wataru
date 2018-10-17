@@ -43,7 +43,7 @@ module UsersHelper
 		end
 	end
 
-	def activity_man(act)
+	def show_man(act)
 		if act.action_type == "Relationship"
 
 			rela = Relationship.find(act.action_id)
@@ -60,37 +60,13 @@ module UsersHelper
 		end
 	end
 
-	def doyouknow_actor(act,user)
-		if act.action_type == "Relationship"
-			rela = Relationship.find(act.action_id)
-			follower = User.find(rela.follower_id)
-			followed = User.find(rela.followed_id)
-			if user.following?(follower) || user.following?(followed)
-				return true
-			end
-		else
-			les = Lesson.find(act.action_id)
-			explorer = User.find(les.user_id)
-			if user.following?(explorer)
-				return true
-			end
-		end
+	def count_defeat(act)
+		lesson = Lesson.find(act.action_id)
+		correct_num = lesson.choices.collect{|i| i.correct || nil}.compact.size
+		all_num = lesson.category.words.collect{|i| i.id}.size
+
+		"defeat #{correct_num}/#{all_num} enemies"
 	end
-	def whoareyou(act,user)
-		if act.action_type == "Relationship"
-			rela = Relationship.find(act.action_id)
-			follower = User.find(rela.follower_id)
-			followed = User.find(rela.followed_id)
-			if follower == user || followed == user
-				return true
-			end
-		else
-			les = Lesson.find(act.action_id)
-			explorer = User.find(les.user_id)
-			if user == explorer
-				return true
-			end
-		end
-	end
+
 end
 

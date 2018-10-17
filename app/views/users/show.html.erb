@@ -54,9 +54,11 @@
 						<%= show_man(act) %>
 					</div>
 					<div class="col-lg-8">
-						<%= activity_log(act) %>
 						<% if act.action_type == "Lesson" %>
+							<%= link_to activity_log(act,"explorer"), user_path(activity_log(act,"lesson_path"))%> go into <%= activity_log(act,"lesson") %>
 							<%= count_defeat(act) %>
+						<% else %>
+							<%= link_to activity_log(act,"follow"), user_path(activity_log(act,"follow_path"))%> followed <%= link_to activity_log(act,"followed"), user_path(activity_log(act,"followed_path"))%>
 						<% end %>
 						<br>
 						<small><%= time_ago_in_words(act.created_at) %></small>

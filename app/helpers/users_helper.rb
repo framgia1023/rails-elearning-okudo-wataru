@@ -8,38 +8,43 @@ module UsersHelper
 		end
 	end
 
-	def activity_log(act)
-		if act.action_type == "Relationship"
-
+	def activity_log(act, type)
+		if type == "follow" || type == "follow_path"
 			rela = Relationship.find(act.action_id)
 			follower = User.find(rela.follower_id)
-			followed = User.find(rela.followed_id)
-
-			# if current_user.following?(follower) || current_user.following?(followed) || current_user == follower || current_user == followed
-			flwname = follower.name
-			flwdname = followed.name
-
+			name = follower.name
+			path = follower.id
 			if follower == current_user
-				flwname = "You"
+				name = "You"
 			end
+
+		elsif type == "followed" || type == "followed_path"
+			rela = Relationship.find(act.action_id)
+			followed = User.find(rela.followed_id)
+			name = followed.name
+			path = followed.id
 			if followed == current_user
-				flwdname = "You"
+				name = "You"
 			end
 
-			"#{flwname} followed #{flwdname}"
-			# end
-
-		elsif act.action_type == "Lesson"
-
-			les = Lesson.find(act.action_id)
-			explorer = User.find(les.user_id)
-			expname = explorer.name
-			cat = Category.find(les.category_id)
-
+		elsif type == "explorer" || type == "lesson_path"
+			lesson = Lesson.find(act.action_id)
+			explorer = User.find(lesson.user_id)
+			name = explorer.name
+			path = explorer.id
 			if current_user == explorer
-				expname = "You"	
+				name = "You"	
 			end
-			"#{expname} go into #{cat.title}"
+
+		elsif type == "lesson"
+			lesson = Lesson.find(act.action_id)
+			cat = Category.find(lesson.category_id)
+			name = cat.title
+		end
+		if type == "follow_path" || type == "followed_path" || type == "lesson_path"
+			path
+		else
+			name
 		end
 	end
 

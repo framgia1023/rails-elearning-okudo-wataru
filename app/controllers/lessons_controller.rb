@@ -5,6 +5,7 @@ class LessonsController < ApplicationController
 		@lesson = current_user.lessons.new(lesson_params)
 
 		if @lesson.save
+			@lesson.create_activity
 			flash[:success] = "Get into QUEST"
 			# redirect_to root_url
 			redirect_to new_user_lesson_answer_url(user_id: current_user.id,lesson_id: @lesson.id)

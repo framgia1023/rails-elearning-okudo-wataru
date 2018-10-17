@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 			act2 = Activity.where(action_type: "Relationship",action_id: followed_hash)
 			act3 = Activity.where(action_type: "Lesson",action_id: lesson_hash)
 			activity = act1 + act2 + act3
-			@activities = Activity.where(id: activity).paginate(page: params[:page], per_page: 6)
+			@activities = Activity.where(id: activity).order(created_at: :desc).paginate(page: params[:page], per_page: 6)
 
 
 		else
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 			act2 = Activity.where(action_type: "Relationship",action_id: followed_hash)
 			act3 = Activity.where(action_type: "Lesson",action_id: lesson_hash)
 			activity = act1 + act2 + act3
-			@activities = Activity.where(id: activity).paginate(page: params[:page], per_page: 6)
+			@activities = Activity.where(id: activity).order(created_at: :desc).paginate(page: params[:page], per_page: 6)
 
 		end			
 

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/admin/home', to: 'admin#home'
 
+  get '/static_pages/dashboard', to: 'static_pages#dashboard'
+
   resources :relationships, only: [:create, :destroy]
   resources :categories
   resources :words

@@ -16,4 +16,5 @@ module AnswersHelper
 		something.collect{|a| a.id}.size
 	end
 
+
 end

@@ -10,6 +10,20 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		# @activities = Activity.paginate(page: params[:page], per_page: 6)
+			follow_act = Relationship.where(follower_id: @user.id)
+			followed_act = Relationship.where(followed_id: @user.id)
+			lesson_act = Lesson.where(user_id: @user.id)
+			follow_hash = follow_act.collect{|item| item.id}
+			followed_hash = followed_act.collect{|item| item.id}
+			lesson_hash = lesson_act.collect{|item| item.id}
+			act1 = Activity.where(action_type: "Relationship",action_id: follow_hash)
+			act2 = Activity.where(action_type: "Relationship",action_id: followed_hash)
+			act3 = Activity.where(action_type: "Lesson",action_id: lesson_hash)
+			activity = act1 + act2 + act3
+			@activities = Activity.where(id: activity).order(created_at: :desc).paginate(page: params[:page], per_page: 6)
+		
+
 	end
 
 	def new
@@ -52,7 +66,7 @@ class UsersController < ApplicationController
 	private
 
 		def user_params
-			params.require(:user).permit(:name, :email, :password, :password_confirmation)
+			params.require(:user).permit(:name, :email, :password, :password_confirmation,:image)
 		end
 
 		def require_login

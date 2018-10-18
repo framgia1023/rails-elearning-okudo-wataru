@@ -69,7 +69,7 @@ module UsersHelper
 	def count_defeat(act)
 		lesson = Lesson.find(act.action_id)
 		correct_num = lesson.choices.collect{|i| i.correct || nil}.compact.size
-		all_num = lesson.category.words.collect{|i| i.id}.size
+		all_num = lesson.words.size
 
 		"defeat #{correct_num}/#{all_num} enemies"
 	end

@@ -27,7 +27,7 @@ module UsersHelper
 				name = "You"
 			end
 
-		elsif type == "explorer" || type == "lesson_path"
+		elsif type == "explorer" || type == "explorer_path"
 			lesson = Lesson.find(act.action_id)
 			explorer = User.find(lesson.user_id)
 			name = explorer.name
@@ -36,12 +36,13 @@ module UsersHelper
 				name = "You"	
 			end
 
-		elsif type == "lesson"
+		elsif type == "lesson" || type == "lesson_path"
 			lesson = Lesson.find(act.action_id)
 			cat = Category.find(lesson.category_id)
 			name = cat.title
+			path = lesson.id
 		end
-		if type == "follow_path" || type == "followed_path" || type == "lesson_path"
+		if type == "follow_path" || type == "followed_path" || type == "explorer_path" || type == "lesson_path"
 			path
 		else
 			name
@@ -71,6 +72,15 @@ module UsersHelper
 		all_num = lesson.category.words.collect{|i| i.id}.size
 
 		"defeat #{correct_num}/#{all_num} enemies"
+	end
+
+	def check_clear(act)
+		les = Lesson.find_by(id: act.action_id,user_id: current_user.id)
+		if les.present?
+			true
+		else
+			false
+		end
 	end
 
 end

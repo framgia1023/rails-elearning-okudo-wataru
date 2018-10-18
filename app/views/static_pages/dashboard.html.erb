@@ -1,44 +1,24 @@
-
-
 <div class="row">
 	<div class="col-lg-6">
 		<div class="row">
 			<div class="container">
-				<%= show_avator(@user) %>
-				<h1><%= @user.name %></h1>
-				<h1><%= @user.email %></h1>						
+				<%= show_avator(current_user) %>
+				<h1><%= current_user.name %></h1>
+				<h1><%= current_user.email %></h1>						
 			</div>
-		</div>
-		<div class="row">
-			<% unless current_user == @user %>
-				<% if current_user.following?(@user) %>
-
-					<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: { method: :delete }, remote: true) do |f|  %>
-						<%= f.submit "Unfollow", class: "btn btn-danger btn-block" %>
-					<% end %>
-
-				<% else %>
-
-					<%= form_for(current_user.active_relationships.build ,remote: true) do |f| %>
-						<div><%= hidden_field_tag :followed_id, @user.id %></div>
-													<!-- params[:followed_id]-->
-						<%= f.submit "Be friend", class: "btn btn-primary btn-block" %>
-					<% end %>
-				<% end %>
-			<% end %>
 		</div>
 		<div class="row">
 			<div class="col-lg-6">
 				<h5>Following</h5>
 					<h3><span class="badge badge-primary" id="following">
-						<%= @user.following.count %>
+						<%= current_user.following.count %>
 						</span>
 					</h3>
 			</div>
 			<div class="col-lg-6">
 				<h5>Followers</h5>
 					<h3><span class="badge badge-primary" id="followers">
-						<%= @user.followers.count %>
+						<%= current_user.followers.count %>
 						</span>
 					</h3>
 			</div>							
@@ -77,5 +57,3 @@
 		</div>
 	</div>
 </div>
-
-

@@ -8,7 +8,7 @@ module UsersHelper
 		end
 	end
 
-	def activity_log(act, type)
+	def act_log(act, type)
 		if type == "follow" || type == "follow_path"
 			rela = Relationship.find(act.action_id)
 			follower = User.find(rela.follower_id)
@@ -75,12 +75,26 @@ module UsersHelper
 	end
 
 	def check_clear(act)
-		les = Lesson.find_by(id: act.action_id,user_id: current_user.id)
-		if les.present?
-			true
+		lesson = Lesson.find(act.action_id)
+		if Lesson.exists?(category_id: lesson.category_id, user_id: current_user.id)
+			return true
 		else
-			false
+			return false
 		end
+	end
+
+	def act_list(user_id)
+		follow_act = Relationship.where(follower_id: user_id)
+		followed_act = Relationship.where(followed_id: user_id)
+		lesson_act = Lesson.where(user_id: user_id)
+		follow_hash = follow_act.collect{|item| item.id}
+		followed_hash = followed_act.collect{|item| item.id}
+		lesson_hash = lesson_act.collect{|item| item.id}
+		act1 = Activity.where(action_type: "Relationship",action_id: follow_hash)
+		act2 = Activity.where(action_type: "Relationship",action_id: followed_hash)
+		act3 = Activity.where(action_type: "Lesson",action_id: lesson_hash)	
+
+		activity = act1 + act2 + act3
 	end
 
 end

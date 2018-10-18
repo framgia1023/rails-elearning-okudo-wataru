@@ -35,16 +35,16 @@
 					</div>
 					<div class="col-lg-8">
 						<% if act.action_type == "Lesson" %>
-							<%= link_to activity_log(act,"explorer"), user_path(activity_log(act,"explorer_path"))%>
+							<%= link_to act_log(act,"explorer"), user_path(act_log(act,"explorer_path"))%>
 							 go into
 							 <% if check_clear(act) %>
-								<%= link_to activity_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: activity_log(act, "lesson_path"))%>
+								<%= link_to act_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: act_log(act, "lesson_path"))%>
 							 <% else %>
-							 	<%= activity_log(act,"lesson") %>
+							 	<%= act_log(act,"lesson") %>
 							 <% end %>
 							<%= count_defeat(act) %>
 						<% else %>
-							<%= link_to activity_log(act,"follow"), user_path(activity_log(act,"follow_path"))%> followed <%= link_to activity_log(act,"followed"), user_path(activity_log(act,"followed_path"))%>
+							<%= link_to act_log(act,"follow"), user_path(act_log(act,"follow_path"))%> followed <%= link_to act_log(act,"followed"), user_path(act_log(act,"followed_path"))%>
 						<% end %>
 						<br>
 						<small><%= time_ago_in_words(act.created_at) %></small>

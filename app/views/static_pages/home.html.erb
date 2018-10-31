@@ -7,9 +7,15 @@
 	<div class="wrap">	
 		<%= image_tag('background/logo2.png', :class => "item logoimage" )%>
 		<br>
-		<div class="item blackwindow">
-			<%= link_to "Continue game", login_path, :style=>"color:white;" %> <br>
-			<%= link_to "Start new game", new_user_path, :style=>"color:white;" %>
-		</div>
 	</div>	
+
+	<div class="blackwindow">
+		<%= link_to login_path do %>
+			<span>▶︎</span>Continue Game
+		<% end %>
+		<%= link_to new_user_path do %>
+			<span>▶︎</span>Start new game
+		<% end %>
+	</div>
+
 </div>

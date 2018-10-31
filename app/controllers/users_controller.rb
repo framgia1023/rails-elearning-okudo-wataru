@@ -1,12 +1,33 @@
 class UsersController < ApplicationController
 	before_action :require_login, except: [:new, :create]
 
-
+	@@indexnum = 0
 
 	def index
-		# @users = User.all
-		@users = User.paginate(page: params[:page], per_page: 6)
+		@users = User.paginate(page: params[:page], per_page: 9)
 	end
+
+	def next
+		@click_id = params[:click_id]
+		@user = User.find(params[:now_id])
+		@prev = User.find(params[:prev_id])
+		# @user = User.find[:now_id]
+		respond_to do |format|
+	    	format.html
+	   		format.js
+	  	end
+	end
+
+	def prev
+		@click_id = params[:click_id]
+		@user = User.find(params[:now_id])
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
 
 	def show
 		@user = User.find(params[:id])

@@ -1,80 +1,56 @@
-
-
-<div class="row">
-	<div class="col-lg-6">
-		<div class="row">
-			<div class="container">
-				<%= show_avator(@user) %>
-				<h1><%= @user.name %></h1>
-				<h1><%= @user.email %></h1>						
-			</div>
+<div class="dash-grid">
+	<div class="userinfo">
+		<div class="nameplate">
+			<p><%= @user.name %></p>
 		</div>
-		<div class="row">
+
+		<div class="avatorimage">
+			<%= show_avator(@user) %>
+		</div>
+
+		<div class="userstatus">
+			<%= @user.email %>
 			<% unless current_user == @user %>
 				<% if current_user.following?(@user) %>
-
 					<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: { method: :delete }, remote: true) do |f|  %>
 						<%= f.submit "Unfollow", class: "btn btn-danger btn-block" %>
 					<% end %>
-
 				<% else %>
-
 					<%= form_for(current_user.active_relationships.build ,remote: true) do |f| %>
-						<div><%= hidden_field_tag :followed_id, @user.id %></div>
+						<%= hidden_field_tag :followed_id, @user.id %>
 													<!-- params[:followed_id]-->
 						<%= f.submit "Be friend", class: "btn btn-primary btn-block" %>
 					<% end %>
 				<% end %>
 			<% end %>
-		</div>
-		<div class="row">
-			<div class="col-lg-6">
-				<h5>Following</h5>
-					<h3><span class="badge badge-primary" id="following">
-						<%= @user.following.count %>
-						</span>
-					</h3>
-			</div>
-			<div class="col-lg-6">
-				<h5>Followers</h5>
-					<h3><span class="badge badge-primary" id="followers">
-						<%= @user.followers.count %>
-						</span>
-					</h3>
-			</div>							
-		</div>			
+		</div>		
 	</div>
 
-
-	<div class="col-lg-6">
-		<div class="jumbotron">
-			<div class="row">
-				<% @activities.each do |act| %>
-					<div class="col-lg-3">
-						<%= show_man(act) %>
-					</div>
-					<div class="col-lg-8">
-						<% if act.action_type == "Lesson" %>
-							<%= link_to act_log(act,"explorer"), user_path(act_log(act,"explorer_path"))%> go into
-							<% if check_clear(act) %>
-								<%= link_to act_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: act_log(act, "lesson_path"))%>
-							<% else %>
-							 	<%= act_log(act,"lesson") %>
-							<% end %>
-							<%= count_defeat(act) %>
-						<% else %>
-							<%= link_to act_log(act,"follow"), user_path(act_log(act,"follow_path"))%> followed <%= link_to act_log(act,"followed"), user_path(act_log(act,"followed_path"))%>
-						<% end %>
-						<br>
-						<small><%= time_ago_in_words(act.created_at) %></small>
-					</div>
-				<% end %>				
+	<div class="dashboard">
+		<% @activities.each do |act| %>
+			<div class="useract">
+				<div class="miniavator">
+					<%= show_man(act) %>
+				</div>
+				<div class="activitylog">
+					<% if act.action_type == "Lesson" %>
+						<%= link_to act_log(act,"explorer"), user_path(act_log(act,"explorer_path"))%>
+						 go into
+						 <% if check_clear(act) %>
+							<%= link_to act_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: act_log(act, "lesson_path"))%>
+						 <% else %>
+						 	<%= act_log(act,"lesson") %>
+						 <% end %>
+						<%= count_defeat(act) %>
+					<% else %>
+						<%= link_to act_log(act,"follow"), user_path(act_log(act,"follow_path"))%> followed <%= link_to act_log(act,"followed"), user_path(act_log(act,"followed_path"))%>
+					<% end %>
+					<br>
+					<small><%= time_ago_in_words(act.created_at) %></small>
+				</div>				
 			</div>
-			<div class="container paginate text-center offset-5">
-				<%= will_paginate @activities %>
-			</div>
-		</div>
-	</div>
+		<% end %>
+		<%= will_paginate @activities %>
+	</div>		
 </div>
-
 

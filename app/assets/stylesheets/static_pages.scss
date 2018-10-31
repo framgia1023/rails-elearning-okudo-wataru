@@ -1,3 +1,126 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bg {
+	background: black;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(6,1fr);
+	height: 50em;
+	text-align: center;
+}
+
+.wrap {
+	grid-row: 1/3;
+	grid-column: 2/6;
+}
+
+.wrap img {
+	width: 80%;
+}
+
+.blackwindow {
+	grid-row: 3/4;
+	grid-column: 3/5;
+	width: 100%;
+	border: white 5px solid;
+	display: solid;
+}
+
+.blackwindow a{
+	display: block;
+	font-size: 30px;
+	color: white;
+	text-align: left;
+	height: 50%;
+	line-height: 80px;
+}
+
+.blackwindow a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.blackwindow a span {
+	opacity: 0;
+}
+
+.blackwindow a:hover span {
+	opacity: 1;
+}
+
+/* ダッシュボード周り */
+
+.dash-grid {
+	display: grid;
+	grid-template-columns: repeat(25, 1fr);
+	grid-template-rows: repeat(16, 1fr);
+	height: 40em;
+	background: black;
+}
+
+.userinfo {
+	grid-column: 4/9;
+	grid-row   : 2/12;
+	display: flex;
+	flex-direction: column;
+}
+
+.nameplate {
+  	// grid-column: 4 / 9;
+  	// grid-row   : 2 / 3;
+	background: black;
+	border: solid 5px white;
+	color: white;
+	text-align: center;
+}
+
+.avatorimage {
+	// grid-column: 4 / 9;
+	// grid-row   : 3 / 7;
+	text-align: center;
+}
+.avatorimage img {
+	// height: 100%;
+	width:100%;
+}
+
+.userstatus {
+	// grid-column: 4 / 9;
+	// grid-row   : 7 / 12;
+	border: solid 5px white;
+	color: white;
+	height: 100%;
+}
+
+.dashboard {
+	grid-column: 11 / 25;
+	grid-row   : 2 / 15;
+	border: solid 5px white;
+	background-image: url(/sakaba.png);
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+}
+
+.useract {
+	display: flex;
+	flex-direction: row;
+}
+
+.miniavator {
+	height: 40px;
+	width: 20px;
+	text-align: center;
+}
+
+.miniavator img {
+	height: 100%;
+}
+
+.activitylog {
+	height: 40px;
+	background: black;
+	border: solid 2px white;
+	font-size: 15px;
+}

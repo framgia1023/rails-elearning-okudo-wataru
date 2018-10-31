@@ -1,27 +1,54 @@
-first stage
+<!-- <h1 style="color: green"><%#= @category.title %></h1> -->
 
-<h1 style="color: green"><%= @category.title %></h1>
-
-
-
-
-<div class="row">
-	<div class="container col-lg-6">
-		<div class="jumbotron">
-			<%= @word.content %>
+<div class="battle-grid">
+	<div class="battle">
+		<div class="question">
+			<p><%= @word.content %></p>
+		</div>
+		<div class="monster">
+			<%= show_monster %>
 		</div>
 	</div>
-	<div class="container col-lg-6">
-		<div class="jumbotron">
-			<% @word.choices.shuffle.each do |ch| %>
 
-				<%= form_for ([@user,@lesson,@answer]) do |f| %>
-					<%= hidden_field_tag :choice_id, ch.id %>
-					<%= hidden_field_tag :word_id, @word.id %>
-					<%= f.submit ch.content, class: "btn btn-dark" %>
-				<% end %>
+	<div class="status">
+		<p>stage</p>
+		<%= @already_length +1 %> / <%= @all_length %>
+	</div>
 
+
+	<div class="selectbox">
+		<% @word.choices.shuffle.each do |ch| %>
+			<%= form_for ([@user,@lesson,@answer]) do |f| %>
+				<%= hidden_field_tag :choice_id, ch.id %>
+				<%= hidden_field_tag :word_id, @word.id %>
+				<div class="choice">
+					<span>▶︎</span>
+					<%= f.submit ch.content, class: "choice-config" %>
+				</div>
 			<% end %>
-		</div>
-	</div>
+		<% end %>
+	</div>	
 </div>
+
+
+<div class="progressbar">
+	<div class="questback">
+		<div class="explorer" >
+			<%= show_avator(current_user) %>
+		</div>
+	</div>	
+</div>
+
+<!-- <input {name= "data", type= "hidden", value= @percentage, class= 'data' }> -->
+
+<div id="hoge" data-hoge-id="<%= @percentage %>"></div>
+
+
+<script>
+	$(function(){
+		var percentage = $('#hoge').data('hoge-id');
+		percentage = percentage + '%'
+		$( ".explorer" ).css( "margin-left" , percentage );
+	})
+</script>
+

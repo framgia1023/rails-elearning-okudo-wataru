@@ -1,7 +1,5 @@
 class AnswersController < ApplicationController
 
-	@@already_ans = []
-
 	def new
 		@user = current_user
 		@lesson = Lesson.find(params[:lesson_id])
@@ -9,6 +7,10 @@ class AnswersController < ApplicationController
 		@answer = Answer.new
 
 		@word = (@category.words - @lesson.words).first
+		@all_length     = @category.words.collect{|item| item.id}.size
+		@already_length = @lesson.words.collect{|item| item.id}.size
+
+		@percentage = 90 * @already_length / @all_length
 
 		if @word == nil
 			redirect_to user_lesson_answers_url(@user, @lesson)
@@ -18,8 +20,6 @@ class AnswersController < ApplicationController
 	def create
 		@answer = Answer.new(answer_params)
 		if @answer.save
-
-			flash[:success] = "go next stage"
 			redirect_to request.referrer
 		else
 			flash[:danger] = "anything wrong happen"

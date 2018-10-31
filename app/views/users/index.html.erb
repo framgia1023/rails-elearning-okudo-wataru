@@ -1,32 +1,56 @@
-<h1>Users</h1>
-<div class="row">
+<div class="all-map">
 	<% @users.each do |user| %>
-	<div class="col-lg-6 offset-4">
-		<div class="media mb-3">
-			<div class="align-self-center">
-			</div>
-			<div class="media-body ml-2">
+		<div class="user-map">
+			<%= link_to user_path(user) do %>	
 				<%= show_avator(user) %>
-
-				<h3><%= link_to user.name, (user_path(user.id)) %></h3>
-				<h3><%= user.email %></h3>
-				
-				<% if user.admin? %>
-					<h1 style="color: red">Guild Master </h1>
-					<p>don't go against me</p>
-				<% end %>
-
-				<% if current_user.admin? %>
-					<% if !current_user?(user) %>
-						<%= link_to "Delete", user_path(user.id), method: :delete, class: "btn btn-danger" %>
-					<% end %>
-				<% end %>
+			<% end %>
+			<div class="arrow_box">
+				<p><%= user.name %></p>
+				<p><%= user.email %></p>				
 			</div>
-
 		</div>
-	</div>
-	<% end %>
-	<div class="container paginate text-center offset-5">
-		<%= will_paginate %>
-	</div>
+	<% end %>	
 </div>
+
+<%= will_paginate %>
+
+<script>
+
+$('img').each(function(){
+
+	var topVal = Math.random()*130;
+	var wideVal = Math.random()*100;
+
+	topPercent = topVal + "px";
+	widePixcel = wideVal + "%";
+
+	$(this).css({'top': topPercent ,'left': widePixcel });
+})
+
+
+$(function () {
+  $('img').hover(function() {
+    $(this).parents('.user-map').children('.arrow_box').show();
+  }, function(){
+    $(this).parents('.user-map').children('.arrow_box').hide();
+  });
+});
+
+$(function () {
+  $('.arrow_box').hover(function() {
+    $(this).show();
+  }, function(){
+    $(this).hide();
+  });
+});
+
+$('img').each(function(){
+  var off = $(this).offset();
+  console.log('top: ' + off.top);
+  console.log('left: ' + off.left);
+  var top_val = off.top + 120;
+  $(this).parents('.user-map').children('.arrow_box').css({'top':top_val,'left':off.left});
+});
+
+
+</script>

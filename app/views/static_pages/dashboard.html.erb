@@ -1,24 +1,68 @@
-<div class="row">
+<div class="dash-grid">
+	<div class="userinfo">
+		<div class="nameplate">
+			<p><%= current_user.name %></p>
+		</div>
+
+		<div class="avatorimage">
+			<%= show_avator(current_user) %>
+		</div>
+
+		<div class="userstatus">
+			<%= current_user.email %>
+
+		</div>		
+	</div>
+
+	<div class="dashboard">
+		<% @activities.each do |act| %>
+			<div class="useract">
+				<div class="miniavator">
+					<%= show_man(act) %>
+				</div>
+				<div class="activitylog">
+					<% if act.action_type == "Lesson" %>
+						<%= link_to act_log(act,"explorer"), user_path(act_log(act,"explorer_path"))%>
+						 go into
+						 <% if check_clear(act) %>
+							<%= link_to act_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: act_log(act, "lesson_path"))%>
+						 <% else %>
+						 	<%= act_log(act,"lesson") %>
+						 <% end %>
+						<%= count_defeat(act) %>
+					<% else %>
+						<%= link_to act_log(act,"follow"), user_path(act_log(act,"follow_path"))%> followed <%= link_to act_log(act,"followed"), user_path(act_log(act,"followed_path"))%>
+					<% end %>
+					<br>
+					<small><%= time_ago_in_words(act.created_at) %></small>
+				</div>
+			</div>
+		<% end %>
+		<%= will_paginate @activities %>
+	</div>	
+</div>
+
+<!-- <div class="row">
 	<div class="col-lg-6">
 		<div class="row">
 			<div class="container">
-				<%= show_avator(current_user) %>
-				<h1><%= current_user.name %></h1>
-				<h1><%= current_user.email %></h1>						
+				<%#= show_avator(current_user) %>
+				<h1><%#= current_user.name %></h1>
+				<h1><%#= current_user.email %></h1>						
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-6">
 				<h5>Following</h5>
 					<h3><span class="badge badge-primary" id="following">
-						<%= current_user.following.count %>
+						<%#= current_user.following.count %>
 						</span>
 					</h3>
 			</div>
 			<div class="col-lg-6">
 				<h5>Followers</h5>
 					<h3><span class="badge badge-primary" id="followers">
-						<%= current_user.followers.count %>
+						<%#= current_user.followers.count %>
 						</span>
 					</h3>
 			</div>							
@@ -29,31 +73,31 @@
 	<div class="col-lg-6">
 		<div class="jumbotron">
 			<div class="row">
-				<% @activities.each do |act| %>
+				<%# @activities.each do |act| %>
 					<div class="col-lg-3">
-						<%= show_man(act) %>
+						<%#= show_man(act) %>
 					</div>
 					<div class="col-lg-8">
-						<% if act.action_type == "Lesson" %>
-							<%= link_to act_log(act,"explorer"), user_path(act_log(act,"explorer_path"))%>
+						<%# if act.action_type == "Lesson" %>
+							<%#= link_to act_log(act,"explorer"), user_path(act_log(act,"explorer_path"))%>
 							 go into
-							 <% if check_clear(act) %>
-								<%= link_to act_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: act_log(act, "lesson_path"))%>
-							 <% else %>
-							 	<%= act_log(act,"lesson") %>
-							 <% end %>
-							<%= count_defeat(act) %>
-						<% else %>
-							<%= link_to act_log(act,"follow"), user_path(act_log(act,"follow_path"))%> followed <%= link_to act_log(act,"followed"), user_path(act_log(act,"followed_path"))%>
-						<% end %>
+							 <%# if check_clear(act) %>
+								<%#= link_to act_log(act, "lesson"), user_lesson_answers_path(user_id: current_user.id, lesson_id: act_log(act, "lesson_path"))%>
+							 <%# else %>
+							 	<%#= act_log(act,"lesson") %>
+							 <%# end %>
+							<%#= count_defeat(act) %>
+						<%# else %>
+							<%#= link_to act_log(act,"follow"), user_path(act_log(act,"follow_path"))%> followed <%#= link_to act_log(act,"followed"), user_path(act_log(act,"followed_path"))%>
+						<%# end %>
 						<br>
-						<small><%= time_ago_in_words(act.created_at) %></small>
+						<small><%#= time_ago_in_words(act.created_at) %></small>
 					</div>
-				<% end %>				
+				<%# end %>				
 			</div>
 			<div class="container paginate text-center offset-5">
-				<%= will_paginate @activities %>
+				<%#= will_paginate @activities %>
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->

@@ -1,3 +1,202 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// インデックス周り
+
+.all-map {
+	display: flex;
+	flex-wrap: wrap;
+	background: url("/index.png");
+	background-size:  100% auto;
+
+}
+
+.user-map {
+	width: 33%;
+	height: 250px;
+	padding: 0 120px 0 0;
+}
+
+.user-map a {
+	height: 0;
+	display: block;
+}
+
+.user-map img {
+	height: 120px;
+	position: relative;
+}
+
+.arrow_box {
+	display: none;
+	position: absolute;
+	padding: 16px;
+	border: white 5px solid;
+	background: black;
+	color: #fff;
+	z-index: 1;
+}
+
+// フォーム周り
+
+.form-container{
+	width: 60%;
+	background: black;
+	border: white 5px solid;
+	margin: auto;
+	margin-top: 60px;
+	padding: 30px;
+}
+.foo {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	height: 20%;
+}
+
+.form-name{
+	margin-left: 60px;
+	grid-column: 1 / 2;
+	background: black;
+}
+
+.form-name p{
+	margin: auto;
+}
+
+.form-name-image {
+	grid-column: 2 / 4;
+	text-align: center;
+}
+.form-self{
+	grid-column: 2 / 5;
+	background: black;
+}
+
+.form-self input {
+	margin-top: 12px;
+	margin-left: 30px;
+	width: 80%;
+	height: 40px;
+	display: block;
+	color:white;
+	background: black;
+	border: white 3px solid;
+}
+
+.image-form{
+	grid-column: 1 / 5;
+	display: flex;
+}
+
+.image-box {
+	width: 10px;
+}
+
+.submit-form{
+	text-align: center;
+	grid-column: 2/4;
+}
+
+.submit-form .submit{
+	cursor: pointer;
+}
+
+input[type="submit"] {
+	border: 5px solid white;
+	color: white;
+	height: 50px;
+	background: black;
+}
+
+/* checkbox周り */
+
+.checkbox
+{
+	display: none;
+}
+
+.checkbox:checked + .avator_style {
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+.avator_style
+{
+	width: 80%;
+}
+
+/* showページ周り */
+
+.dash-grid {
+	display: grid;
+	grid-template-columns: repeat(25, 1fr);
+	grid-template-rows: repeat(16, 1fr);
+	height: 40em;
+	background: black;
+}
+
+.useract {
+	grid-column: 4/9;
+	grid-row   : 2/12;
+	display: flex;
+	flex-direction: column;
+}
+
+.nameplate {
+	background: black;
+	border: solid 5px white;
+	color: white;
+	text-align: center;
+}
+
+.avatorimage {
+	text-align: center;
+}
+.avatorimage img {
+	width:100%;
+}
+
+.userstatus {
+	border: solid 5px white;
+	color: white;
+	height: 100%;
+}
+
+// dashboard周り
+
+.dashboard {
+	grid-column: 11 / 25;
+	grid-row   : 2 / 15;
+	border: solid 5px white;
+	background-image: url(/sakaba.png);
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+}
+
+.useract {
+	display: flex;
+	flex-direction: row;
+	height: 15%;
+}
+
+.miniavator {
+	width: 10%;
+	text-align: center;
+}
+
+.miniavator > img {
+	margin-top: 20px;
+	margin-left: 20px;
+	height: 50px;
+	display: block;
+}
+
+.activitylog {
+	height: 90%;
+	width: 90%;
+	background: black;
+	border: solid 2px white;
+	margin: 15px;
+}

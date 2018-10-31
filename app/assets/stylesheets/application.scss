@@ -1,79 +1,225 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 @import "bootstrap";
 @import "font-awesome";
 
-body
-{
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: black;
 	font-family: 'Press Start 2P', cursive;
-}
-
-.bg
-{
-	height: 580px;
-	background-color: #000b84;
+	font-size: 20px;
 	color: white;
 }
 
-.wrap
-{
-	height: 500px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+.BTN {
+	display: block;
+	border: solid 5px white;
+	cursor:pointer; 
 }
 
-.blackwindow
-{	
-	background-color: black;
-	border: solid white;
-	font-size: 40px;
-}
-
-.logoimage
-{
-	max-width: 50%;
-}
-
-.icon
-{
-	height: 50px;
-	width: 50px;
-	fill: #fff;
-}
-
-.nav-item ul li 
-{
-	list-style: none;
-	color: white;
-	text-align: center;
-}
-
-.icon:hover
-{
-	fill: red;
-}
-.word:hover
-{
+.BTN-SUCCESS:hover {
+	background: yellow;
 	color: red;
-
+	border: green 5px solid;
 }
 
-.avator_style
-{
-	height: 100px;
+.ALERT {
+	background: #e91e63;
+	position: absolute;
 }
 
-.checkbox
-{
-	display: none;
+button, input, select, textarea {
+  font-family : 'Press Start 2P', cursive;
+  font-size   : 100%;
 }
 
-.checkbox:checked + .avator_style {
-    border: 1px solid red;
+.navbar {
+	height: 110px;
+	background: black;
+	border: solid 5px white;
+	width: 100%;
+	display: flex;
+	box-sizing:border-box;
 }
 
-.satan_room{
-	height: 600px;
-	background: url('background/castle.jpg');
-	background-size: 100% 100%;
+.navbar .navcontainer {
+	height: 100%;
+	width: 300px;
+	display: block;
 }
+
+.navbar .navcontainer p {
+	position: absolute;
+	line-height: 84px;
+	margin:0; 
+}
+
+.navbar ul {
+	position: absolute;
+	top: 0%;
+	left: 100%;
+	transform: translate(-100%,0%);
+	margin: 0;
+	padding: 20px 0;
+	display: flex;
+}
+
+.navbar ul li {
+	list-style: none;
+	text-align: center;
+	display: block;
+	width: 150px;
+}
+
+ul li .atag {
+	text-decoration: none;
+	padding: 0 20px;
+	display: block;
+}
+
+ul li .atag .iconbox {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	overflow: hidden;
+	margin: 0 auto 10px;
+}
+
+
+/* -----------------------------------------------------------------------------*/
+/* dropdown menu */
+/* -----------------------------------------------------------------------------*/
+
+.nav-content {
+	position: absolute;
+	overflow: hidden;
+    background: #fff;
+    max-height: 0;
+}
+
+.atag:hover ~ .nav-content {
+	max-height: 400px;
+	-webkit-transition:max-height 0.4s ease-in;
+	-moz-transition:max-height 0.4s ease-in;
+	transition:max-height 0.4s ease-in;
+}
+
+.nav-content:hover {
+	max-height: 400px;
+	z-index: 1;
+}
+
+ul.second-level {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    background: black;
+	border: solid 5px white;
+	box-sizing:border-box;
+	padding: 0;
+	z-index: 1;
+}
+
+ul.second-level:hover {
+	max-height: 400px;
+}
+
+ul.second-level li {
+	font-size: 15px;
+	text-align: left;
+	clear: left;
+	width: 100%;
+	margin-right: 10px;
+	// display: table-cell;
+}
+ul.second-level li span {
+	opacity: 0;
+}
+ul.second-level li:hover span {
+	opacity: 1;
+}
+
+
+ul.second-level li a {
+	padding: 10px 0;
+	display: block;
+	color: white;
+	text-decoration: none;
+}
+
+/* -----------------------------------------------------------------------------*/
+/* circulate icon */
+/* -----------------------------------------------------------------------------*/
+
+ul li .atag .iconbox .icon {
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+	font-size: 34px;
+	transition: 0.5s;
+	color: #000;
+	fill: white;
+}
+
+ul li .atag .iconbox .icon:last-child {
+	fill: white;
+}
+
+ul li .atag:hover .iconbox .icon {
+	transform: translateY(-100%);
+}
+
+ul li .atag .name {
+	position: relative;
+	height: 20px;
+	width: 100%;
+	display: block;
+	overflow: hidden;
+}
+
+ul li .atag .name span {
+	display: block;
+	position: relative;
+	color: white;
+	font-size: 13px;
+	line-height: 20px;
+	transition: 0.5s;
+}
+
+ul li .atag .name span:before {
+	content: attr(data-text);
+	position: absolute;
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: white;
+}
+
+ul li .atag:hover .name span{
+	transform: translateY(20px);
+}
+
+/* -----------------------------------------------------------------------------*/
+/* second link tag */
+/* -----------------------------------------------------------------------------*/
+
+// ul.second-level li:hover a {
+// 	color: #e91e63;
+// 	transition: 0.3s;
+// }

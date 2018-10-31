@@ -1,23 +1,24 @@
-<div class="row">
-	<% @categories.each do |cat| %>
-		<div class="col-lg-4">
-			<div class="jumbotron m-3">
-			    <h3 class=""><%= link_to cat.title ,category_path(cat.id) %></h3>
-			    <p class=""><%= cat.description %></p>
+<div class="category-container">
 
-			    <%= form_for ([@user, @user.lessons.build]) do |f| %>
-				    <%= hidden_field_tag :category_id, cat.id %>
-					
-					<% if cat.lessons.find_by(user_id: current_user.id,category_id: cat.id).present? %>
-						<%= link_to "Show answer" ,user_lesson_answers_url(@user, @user.lessons.find_by(category_id: cat.id)), class: "btn btn-warning" %>
-					<% else %>
-					    <%= f.submit "Go to quest" , class: "btn btn-success"%>
-				    <% end %>
-			    <% end %>		
-			</div>
-		</div>
-	<% end %>
+	<% @categories.each do |cat| %>
+		<div class="category-box">
+		    <h3 class=""><%= link_to cat.title ,category_path(cat.id) %></h3>
+		    <p class=""><%= cat.description %></p>
+
+		    <%= form_for ([@user, @user.lessons.build]) do |f| %>
+			    <%= hidden_field_tag :category_id, cat.id %>
+				
+				<% if cat.lessons.find_by(user_id: current_user.id,category_id: cat.id).present? %>
+					<%= link_to "Show answer" ,user_lesson_answers_url(@user, @user.lessons.find_by(category_id: cat.id)), class: "BTN BTN-WARNING" %>
+				<% else %>
+				    <%= f.submit "Go to quest" , class: "BTN BTN-SUCCESS"%>
+			    <% end %>
+		    <% end %>		
+		</div>		
+	<% end %>	
 </div>
+
+
 <div class="container paginate text-center offset-5">
 	<%= will_paginate %>
 </div>

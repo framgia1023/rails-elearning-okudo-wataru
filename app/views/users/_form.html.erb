@@ -1,90 +1,72 @@
-<%= form_for @user do |f| %>
-<%= render "shared/error_messages", object: f.object %>
-
-<div class="form-group">
-	<%= f.label :name %>
-	<%= f.text_field :name, class: "form-control", placeholder: "ENTER YOUR NAME" %>				
-</div>
-
-<div class="form-group">
-	<%= f.label :email %>
-	<%= f.email_field :email, class: "form-control", placeholder: "ENTER YOUR EMAIL" %>				
-</div>
-
-<div class="form-group">
-	<%= f.label :password %>
-	<%= f.password_field :password, class: "form-control", placeholder: "ENTER YOUR PASSWORD" %>				
-</div>
-
-<div class="form-group">
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation, class: "form-control", placeholder: "ENTER YOUR PASSWORD AGAIN" %>				
-</div>
-
-<div class="form-group">
-	<%= f.label :avator_image %>	<br>
-	<div class="row">
-		<div class="col-lg-3">
-			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator1.png',nil %>
-			<%= image_tag('/avator1.png', class: "avator_style", for: :image) %>		
-			</label>			
+<div class="form-container">
+	<%= form_for @user, html: {class: 'foo'} do |f|  %>
+	<%= render "shared/error_messages", object: f.object %>
+		<div class="form-name">
+			<p>NAME</p>
 		</div>
-		<div class="col-lg-3">
-			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator2.png',nil %>
-			<%= image_tag('/avator2.png', class: "avator_style", for: :image) %>		
-			</label>			
+		<div class="form-self">
+			<%= f.text_field :name ,placeholder: "ENTER YOUR NAME" %>
 		</div>
-		<div class="col-lg-3">
-			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator3.png',nil %>
-			<%= image_tag('/avator3.png', class: "avator_style", for: :image) %>		
-			</label>			
+		<div class="form-name">
+			<p>EMAIL</p>
 		</div>
-		<div class="col-lg-3">
+		<div class="form-self">
+			<%= f.text_field :email ,placeholder: "ENTER YOUR EMAIL" %>
+		</div>
+		<div class="form-name">
+			<p>PASS</p>
+		</div>
+		<div class="form-self">
+			<%= f.password_field :password, placeholder: "ENTER YOUR PASSWORD" %>
+		</div>
+		<div class="form-name">
+			<p>PASS CONF</p>
+		</div>
+		<div class="form-self">
+			<%= f.password_field :password, placeholder: "ENTER YOUR PASS AGAIN" %>
+		</div>
+		<div class="form-name-image">
+			<p>IMAGE</p>
+		</div>
+		<div class="image-form">
 			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator4.png',nil %>
-			<%= image_tag('/avator4.png', class: "avator_style", for: :image) %>		
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator1.png',nil %>
+				<%= image_tag('/avator1.png', class: "avator_style", for: :image) %>		
+			</label>			
+			<label class="image_box">
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator2.png',nil %>
+				<%= image_tag('/avator2.png', class: "avator_style", for: :image) %>		
+			</label>			
+			<label class="image_box">
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator3.png',nil %>
+				<%= image_tag('/avator3.png', class: "avator_style", for: :image) %>		
+			</label>			
+			<label class="image_box">
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator4.png',nil %>
+				<%= image_tag('/avator4.png', class: "avator_style", for: :image) %>		
 			</label>				
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-3">
 			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator5.png',nil %>
-			<%= image_tag('/avator5.png', class: "avator_style", for: :image) %>		
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator5.png',nil %>
+				<%= image_tag('/avator5.png', class: "avator_style", for: :image) %>		
+			</label>			
+			<label class="image_box">
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator6.png',nil %>
+				<%= image_tag('/avator6.png', class: "avator_style", for: :image) %>		
+			</label>			
+			<label class="image_box">
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator7.png',nil%>
+				<%= image_tag('/avator7.png', class: "avator_style", for: :image) %>		
+			</label>			
+			<label class="image_box">
+				<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator8.png',nil %>
+				<%= image_tag('/avator8.png', class: "avator_style", for: :image) %>		
 			</label>			
 		</div>
-		<div class="col-lg-3">
-			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator6.png',nil %>
-			<%= image_tag('/avator6.png', class: "avator_style", for: :image) %>		
-			</label>			
+		<div class="submit-form">
+			<%= f.submit "START QUEST", :class=>"submit" %>
 		</div>
-		<div class="col-lg-3">
-			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator7.png',nil%>
-			<%= image_tag('/avator7.png', class: "avator_style", for: :image) %>		
-			</label>			
-		</div>
-		<div class="col-lg-3">
-			<label class="image_box">
-			<%= f.check_box :image, { checked: false ,:class => "checkbox"}, '/avator8.png',nil %>
-			<%= image_tag('/avator8.png', class: "avator_style", for: :image) %>		
-			</label>				
-		</div>
-	
-	</div>
-	
+	<% end %>
 </div>	
-
-<div class="form-group">
-	<%= f.submit%>			
-</div>
-
-<% end %>
 
 <script type="text/javascript">
 	$("input:checkbox").on('click', function() {

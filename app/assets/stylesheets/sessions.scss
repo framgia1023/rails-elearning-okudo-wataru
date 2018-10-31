@@ -1,3 +1,63 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form-container{
+	width: 60%;
+	background: black;
+	border: white 5px solid;
+	margin: auto;
+	margin-top: 60px;
+	padding: 30px;
+}
+.foo {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	height: 20%;
+}
+
+.form-name{
+	margin-left: 60px;
+	grid-column: 1 / 2;
+	background: black;
+}
+
+.form-name p{
+	margin: auto;
+}
+
+.form-name-image {
+	grid-column: 2 / 4;
+	text-align: center;
+}
+.form-self{
+	grid-column: 2 / 5;
+	background: black;
+}
+
+.form-self input {
+	margin-top: 12px;
+	margin-left: 30px;
+	width: 80%;
+	height: 40px;
+	display: block;
+	color:white;
+	background: black;
+	border: white 3px solid;
+}
+.submit-form{
+	margin-top: 20px;
+	text-align: center;
+	grid-column: 2/4;
+	cursor:pointer;
+}
+
+.submit-form .submit{
+	cursor: pointer;
+}
+
+input[type="submit"] {
+	border: 5px solid white;
+	color: white;
+	height: 50px;
+	background: black;
+}

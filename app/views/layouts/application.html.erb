@@ -15,14 +15,16 @@
 
     <%if flash.any?  %>
       <% flash.each do |type, msg| %>
-      <div class="alert alert-<%= type %>">
-        <div><%= msg %></div>
-      </div>
+  <!--       <div class="alert alert-<%= type %>"> -->
+        <div class="ALERT ALERT-<%= type %>">
+          <div><%= msg %></div>
+        </div>
+      <% end %>
     <% end %>
-    <% end %>
+
 
     <%= yield %>
 
-    <%= render "layouts/footer" %>
+    <%#= render "layouts/footer" %>
   </body>
 </html>

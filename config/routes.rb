@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/admin/home', to: 'admin#home'
+  get 'users/next'
+  post 'users/next'
+  get 'users/prev'
+  post 'users/prev'
 
   get '/static_pages/dashboard', to: 'static_pages#dashboard'
 

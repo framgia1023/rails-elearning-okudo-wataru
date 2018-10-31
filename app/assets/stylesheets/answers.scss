@@ -1,3 +1,116 @@
 // Place all the styles related to the answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// answer index
+
+.icon {
+	fill: white;
+	height: 50px;
+}
+
+// answer new
+
+.battle-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	height: 20em;
+	background-image: url(/sakaba.png);
+	background-color: black;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center center;
+}
+
+.battle {
+  	grid-column: 4 / 9;
+  	grid-row   : 1 / 3;
+  	margin-top: 1px;
+	background: black;
+	border: solid 5px white;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.question {
+	grid-column: 3 / 11;
+	grid-row   : 1 / 2;
+	background: black;
+	margin-top: 3px;
+	border: solid 3px white;	
+	color: white;
+	text-align: center;
+}
+
+.question p {
+	color: white;
+
+}
+
+.monster {
+	grid-column: 5 / 9;
+	grid-row   : 2 / 6;
+}
+
+.monster img {
+	height: 100%;
+	width: 100%;
+}
+
+.status {
+	margin: 20px;
+	grid-column: 3/5;
+	grid-row   : 3/4;
+	background: black;
+	border: solid 5px white;
+}
+
+.selectbox {
+  	grid-column: 5 / 10;
+  	grid-row   : 3 / 4;
+	background: black;
+	border: solid 5px white;
+	box-sizing:border-box;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	color: white;
+	text-align: center;
+	height: 100%;
+}
+
+.choice {
+	grid-column: 1/2;
+	grid-row   : 1/2;
+	height: 100%;
+	display: inline-block;
+}
+
+.choice-config {
+	cursor:pointer;
+}
+
+.choice span {
+	display: none;
+}
+
+.choice:hover span {
+	display: inline;
+}
+
+.progressbar {
+	height: 180px;
+}
+
+.questback {
+	background: url(/haikei.png);
+	background-size: cover;
+	height: 100%;
+}
+
+.progressbar .explorer img{
+	margin-top: 70px;
+	height: 90px;
+}

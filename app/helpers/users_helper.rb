@@ -55,14 +55,14 @@ module UsersHelper
 			rela = Relationship.find(act.action_id)
 			follower = User.find(rela.follower_id)
 
-			image_tag("#{follower.image}", class: "avator_style")
+			image_tag("#{follower.image}", class: "dash_avator")
 
 		elsif act.action_type == "Lesson"
 
 			les = Lesson.find(act.action_id)
 			explorer = User.find(les.user_id)
 
-			image_tag("#{explorer.image}", class: "avator_style")
+			image_tag("#{explorer.image}", class: "dash_avator")
 		end
 	end
 

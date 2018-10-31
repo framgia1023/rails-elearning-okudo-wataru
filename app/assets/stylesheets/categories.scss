@@ -1,0 +1,15 @@
+.category-container {
+	display: flex;
+	background: black;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.category-box {
+	background: black;
+	border: white solid 6px;
+	width: 30%;
+	margin: 20px 20px;
+}
+
